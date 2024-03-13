@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalRide.Api", "RentalRide.Api.csproj", "{0A04C08D-BF4F-4EDA-A8E8-FC8EFF4CFB1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Api", "01 - Api", "{323A44F7-0056-4195-86E8-0D4976FEB26B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Domain", "02 - Domain", "{C867269C-B9A7-4FFF-B260-043F951ECC6B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalRide.Domain", "..\RentalRide.Domain\RentalRide.Domain.csproj", "{C50D4D83-9367-4428-8181-20A3355F9BB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalRide.Shared", "..\RentalRide.Shared\RentalRide.Shared.csproj", "{99FBF2C2-0898-4431-81D6-9E8876AD9D2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Infra", "03 - Infra", "{81008B41-7E22-4559-B5C9-2323E9A67229}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Test", "04 - Test", "{C721C9C4-C3ED-4E71-9139-E3E5574B3E1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.01 - Data", "03.01 - Data", "{11A21635-B015-43AD-A777-7388134B3C92}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalRide.Infra.Data", "..\RentalRide.Infra.Data\RentalRide.Infra.Data.csproj", "{C071A60E-5EAB-4B8B-8433-4B9E27576094}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.02 - CrossCutting", "03.02 - CrossCutting", "{382BBBA5-E1E5-4931-8090-C998E1AE51B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalRide.Infra.CrossCutting.IoC", "..\RentalRide.Infra.CrossCutting.Ioc\RentalRide.Infra.CrossCutting.IoC.csproj", "{ECFF1082-9D34-40B3-8735-B8DD0C8A469D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalRide.Infra.CrossCutting.AspNetFilters", "..\RentalRide.Infra.CrossCutting.AspNetFilters\RentalRide.Infra.CrossCutting.AspNetFilters.csproj", "{03E5C7FC-BF25-4A21-B140-B3C0C97572B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A04C08D-BF4F-4EDA-A8E8-FC8EFF4CFB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A04C08D-BF4F-4EDA-A8E8-FC8EFF4CFB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A04C08D-BF4F-4EDA-A8E8-FC8EFF4CFB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A04C08D-BF4F-4EDA-A8E8-FC8EFF4CFB1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C50D4D83-9367-4428-8181-20A3355F9BB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C50D4D83-9367-4428-8181-20A3355F9BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C50D4D83-9367-4428-8181-20A3355F9BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C50D4D83-9367-4428-8181-20A3355F9BB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99FBF2C2-0898-4431-81D6-9E8876AD9D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99FBF2C2-0898-4431-81D6-9E8876AD9D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99FBF2C2-0898-4431-81D6-9E8876AD9D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99FBF2C2-0898-4431-81D6-9E8876AD9D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C071A60E-5EAB-4B8B-8433-4B9E27576094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C071A60E-5EAB-4B8B-8433-4B9E27576094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C071A60E-5EAB-4B8B-8433-4B9E27576094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C071A60E-5EAB-4B8B-8433-4B9E27576094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECFF1082-9D34-40B3-8735-B8DD0C8A469D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECFF1082-9D34-40B3-8735-B8DD0C8A469D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECFF1082-9D34-40B3-8735-B8DD0C8A469D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECFF1082-9D34-40B3-8735-B8DD0C8A469D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03E5C7FC-BF25-4A21-B140-B3C0C97572B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03E5C7FC-BF25-4A21-B140-B3C0C97572B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03E5C7FC-BF25-4A21-B140-B3C0C97572B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03E5C7FC-BF25-4A21-B140-B3C0C97572B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A04C08D-BF4F-4EDA-A8E8-FC8EFF4CFB1C} = {323A44F7-0056-4195-86E8-0D4976FEB26B}
+		{C50D4D83-9367-4428-8181-20A3355F9BB1} = {C867269C-B9A7-4FFF-B260-043F951ECC6B}
+		{99FBF2C2-0898-4431-81D6-9E8876AD9D2D} = {C867269C-B9A7-4FFF-B260-043F951ECC6B}
+		{11A21635-B015-43AD-A777-7388134B3C92} = {81008B41-7E22-4559-B5C9-2323E9A67229}
+		{C071A60E-5EAB-4B8B-8433-4B9E27576094} = {11A21635-B015-43AD-A777-7388134B3C92}
+		{382BBBA5-E1E5-4931-8090-C998E1AE51B2} = {81008B41-7E22-4559-B5C9-2323E9A67229}
+		{ECFF1082-9D34-40B3-8735-B8DD0C8A469D} = {382BBBA5-E1E5-4931-8090-C998E1AE51B2}
+		{03E5C7FC-BF25-4A21-B140-B3C0C97572B7} = {382BBBA5-E1E5-4931-8090-C998E1AE51B2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32530AB5-F3B5-44A0-82B1-5C1AB51B4402}
+	EndGlobalSection
+EndGlobal
