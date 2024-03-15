@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "rFs9JCwIZhvNd5AHhvLEfuHoHAE6E/VMnd8/SIedeWyy5/jjimOsgEX4744fIt7/97xAccdbU6VzWlDKEyzuXg==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\RentalRideProject\\RentalRide\\RentalRide.Shared\\RentalRide.Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hisqu\\.nuget\\packages\\fluentvalidator\\2.0.4\\fluentvalidator.2.0.4.nupkg.sha512",
+    "C:\\Users\\hisqu\\.nuget\\packages\\microsoft.netcore.app\\2.1.29\\microsoft.netcore.app.2.1.29.nupkg.sha512",
+    "C:\\Users\\hisqu\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.29\\microsoft.netcore.dotnetapphost.2.1.29.nupkg.sha512",
+    "C:\\Users\\hisqu\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.1.29\\microsoft.netcore.dotnethostpolicy.2.1.29.nupkg.sha512",
+    "C:\\Users\\hisqu\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.1.29\\microsoft.netcore.dotnethostresolver.2.1.29.nupkg.sha512",
+    "C:\\Users\\hisqu\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.14\\microsoft.netcore.platforms.2.1.14.nupkg.sha512",
+    "C:\\Users\\hisqu\\.nuget\\packages\\microsoft.netcore.targets\\2.0.0\\microsoft.netcore.targets.2.0.0.nupkg.sha512",
+    "C:\\Users\\hisqu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  rentalride.api:
+    image: ${DOCKER_REGISTRY-}rentalrideapi
+    build:
+      context: RentalRide.Api
+      dockerfile: Dockerfile
+  rentalride.database:
+    image: postgres:latest
+    container_name: rentalride.database
+    ports:
+      - 5432:5432
+    volumes:
+      - ./.containers/rentalride-db:/var/lib/postgresql
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=rentalride
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: always
+    depends_on:
+      - rentalride.database
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@localhost.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - 8080:80
+    volumes:
+      - ./data/pgadmin:/var/lib/pgadmin
