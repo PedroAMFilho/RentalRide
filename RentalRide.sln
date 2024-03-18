@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalRide.Infra.CrossCutti
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{ED23494B-2BD8-4D01-A636-C9012B25E3D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalRide.Tests", "..\RentalRide.Tests\RentalRide.Tests.csproj", "{4F236FE7-AD23-4BCB-9319-DD09FE94309A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalRide.Tests", "..\RentalRide.Tests\RentalRide.Tests.csproj", "{4F236FE7-AD23-4BCB-9319-DD09FE94309A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

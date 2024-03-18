@@ -12,7 +12,8 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./.containers/rentalride-db:/var/lib/postgresql
+     - ./.containers/rentalride-db/data:/var/lib/postgresql
+     - ./postgres/restore/rental_ride_sql.sql://docker-entrypoint-initdb.d/rental_ride_sql.sql
     environment:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=postgres
