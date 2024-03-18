@@ -1,0 +1,104 @@
+240317221547443405,pg_restore: connecting to database for restore
+
+240317221547452591,pg_restore: creating TYPE "public.access_toggle"
+
+240317221547466889,pg_restore: creating TYPE "public.cnh"
+
+240317221547469621,pg_restore: creating TYPE "public.permission_type"
+
+240317221547473232,pg_restore: creating TYPE "public.status"
+
+240317221547477691,pg_restore: creating TABLE "public.deliverer"
+
+240317221547482957,pg_restore: creating SEQUENCE "public.deliverer_id_del_seq"
+
+240317221547487906,pg_restore: creating SEQUENCE OWNED BY "public.deliverer_id_del_seq"
+
+240317221547491325,pg_restore: creating TABLE "public.delivery"
+
+240317221547499258,pg_restore: creating SEQUENCE "public.delivery_id_seq"
+
+240317221547503431,pg_restore: creating SEQUENCE OWNED BY "public.delivery_id_seq"
+
+240317221547507720,pg_restore: creating TABLE "public.motorcycle"
+
+240317221547510599,pg_restore: creating SEQUENCE "public.motorcycle_id_seq"
+
+240317221547514836,pg_restore: creating SEQUENCE OWNED BY "public.motorcycle_id_seq"
+
+240317221547518835,pg_restore: creating TABLE "public.reservation"
+
+240317221547520946,pg_restore: creating SEQUENCE "public.reservation_id_seq"
+
+240317221547523921,pg_restore: creating SEQUENCE OWNED BY "public.reservation_id_seq"
+
+240317221547526231,pg_restore: creating TABLE "public.reservation_plan"
+
+240317221547529259,pg_restore: creating SEQUENCE "public.reservation_plan_id_seq"
+
+240317221547533773,pg_restore: creating SEQUENCE OWNED BY "public.reservation_plan_id_seq"
+
+240317221547536697,pg_restore: creating TABLE "public.userbase"
+
+240317221547540052,pg_restore: creating SEQUENCE "public.userbase_id_seq"
+
+240317221547543311,pg_restore: creating SEQUENCE OWNED BY "public.userbase_id_seq"
+
+240317221547546365,pg_restore: creating DEFAULT "public.deliverer id_del"
+
+240317221547549575,pg_restore: creating DEFAULT "public.delivery id"
+
+240317221547553805,pg_restore: creating DEFAULT "public.motorcycle id"
+
+240317221547557725,pg_restore: creating DEFAULT "public.reservation id"
+
+240317221547560700,pg_restore: creating DEFAULT "public.reservation_plan id"
+
+240317221547564438,pg_restore: creating DEFAULT "public.userbase id"
+
+240317221547567811,pg_restore: processing data for table "public.deliverer"
+
+240317221547570715,pg_restore: processing data for table "public.delivery"
+
+240317221547574255,pg_restore: processing data for table "public.motorcycle"
+
+240317221547577832,pg_restore: processing data for table "public.reservation"
+
+240317221547581447,pg_restore: processing data for table "public.reservation_plan"
+
+240317221547584647,pg_restore: processing data for table "public.userbase"
+
+240317221547587196,pg_restore: executing SEQUENCE SET deliverer_id_del_seq
+
+240317221547591887,pg_restore: executing SEQUENCE SET delivery_id_seq
+
+240317221547595801,pg_restore: executing SEQUENCE SET motorcycle_id_seq
+
+240317221547598052,pg_restore: executing SEQUENCE SET reservation_id_seq
+
+240317221547601952,pg_restore: executing SEQUENCE SET reservation_plan_id_seq
+
+240317221547604364,pg_restore: executing SEQUENCE SET userbase_id_seq
+
+240317221547607757,pg_restore: creating CONSTRAINT "public.deliverer deliverer_drivers_license_key"
+
+240317221547611241,pg_restore: creating CONSTRAINT "public.deliverer deliverer_pkey"
+
+240317221547613948,pg_restore: creating CONSTRAINT "public.delivery delivery_pkey"
+
+240317221547618457,pg_restore: creating CONSTRAINT "public.motorcycle motorcycle_license_plate_key"
+
+240317221547621716,pg_restore: creating CONSTRAINT "public.motorcycle motorcycle_pkey"
+
+240317221547624672,pg_restore: creating CONSTRAINT "public.reservation reservation_pkey"
+
+240317221547628751,pg_restore: creating CONSTRAINT "public.reservation_plan reservation_plan_pkey"
+
+240317221547632740,pg_restore: creating CONSTRAINT "public.userbase userbase_pkey"
+
+240317221547636032,pg_restore: creating FK CONSTRAINT "public.delivery delivery_deliverer_id_fkey"
+
+240317221547638364,pg_restore: creating FK CONSTRAINT "public.reservation reservation_motorcycle_fkey"
+
+240317221547642729,pg_restore: creating FK CONSTRAINT "public.reservation reservation_reservation_plan_id_fkey"
+

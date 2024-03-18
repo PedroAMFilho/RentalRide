@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentalRide.Domain.DelivererContext.Commands.Handler;
 using RentalRide.Domain.DelivererContext.Commands.Inputs;
 using RentalRide.Domain.DelivererContext.Commands.Outputs;
@@ -33,9 +34,10 @@ namespace RentalRide.Api.Controllers.UserBaseContext
             return _repository.GetDelivererByName(name);
         }
 
-        [HttpPost]
+        [HttpPut]
+        [AllowAnonymous]
         [Route("rentalride/create-deliverer")]
-        public ICommandResult Create([FromBody]CreateDelivererCommand command) 
+        public ICommandResult Create([FromBody]CreateDelivererCommand command,[FromForm] IFormFile imageFile) 
         {
             var result = (CommandResult)_handler.Handle(command);
             return result;

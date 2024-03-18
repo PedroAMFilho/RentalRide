@@ -5,8 +5,6 @@ using RentalRide.Api.Security;
 using RentalRide.Infra.CrossCutting.IoC;
 using RentalRide.Infra.CrossCutting.AspNetFilters;
 
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
-
 namespace RentalRide.Api
 {
     public class Startup
@@ -48,7 +46,7 @@ namespace RentalRide.Api
 
         public void Configure(
             IApplicationBuilder app,
-            IHostingEnvironment env)
+            Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {

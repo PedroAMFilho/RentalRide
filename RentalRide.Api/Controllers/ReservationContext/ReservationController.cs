@@ -9,16 +9,14 @@ namespace RentalRide.Api.Controllers.ReservationContext
 {
     public class ReservationController : Controller
     {
-        private readonly IReservationRepository _repository;
         private readonly ReservationHandler _handler;
 
         public ReservationController(IReservationRepository repository, ReservationHandler handler)
         {
-            _repository = repository;
             _handler = handler;
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("rentalride/create-reservation")]
         public ICommandResult Create([FromBody]CreateReservationCommand command) 
         {
@@ -34,14 +32,12 @@ namespace RentalRide.Api.Controllers.ReservationContext
             return result;
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("rentalride/create-reservation-plan")]
         public ICommandResult CreateReservationPlan([FromBody] CreateReservationPlanCommand command)
         {
             var result = (CommandResult)_handler.Handle(command);
             return result;
         }
-
-
     }
 }

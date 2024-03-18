@@ -14,6 +14,7 @@ namespace RentalRide.Domain.MotorcycleContext.Repositories
         IEnumerable<Motorcycle> GetByLicense(string license);
         public void Create(CreateMotorcycleCommand command);
         public void Update(UpdateMotorcycleCommand command);
+        public bool MotorcycleIsAvailable(int motorcycle_id);
         public void Delete(int id);
     }
 }

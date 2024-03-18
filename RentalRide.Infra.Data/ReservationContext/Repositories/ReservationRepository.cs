@@ -5,6 +5,7 @@ using Dapper;
 using System.Text;
 using System.Data;
 using RentalRide.Domain.ReservationContext.Commands.Entities;
+using RentalRide.Domain.ReservationContext.Queries;
 
 namespace RentalRide.Infra.Data.ReservationContext.Repositories
 {
@@ -17,17 +18,17 @@ namespace RentalRide.Infra.Data.ReservationContext.Repositories
             _context = context;
         }
 
-        public Reservation GetReservation(int id)
+        public GetReservationQueryResult GetReservation(int id)
         {
             var query = new StringBuilder();
-            query.Append("SELECT start_date, end_date, model, year, license_plate, name, rental_days, daily_cost, status ");
+            query.Append("SELECT start_date, end_date, model, year, license_plate, name, rental_days, daily_cost, status , percentage_fine ");
             query.Append("from reservation r INNER JOIN reservation_plan p ON r.reservation_plan_id = p.id ");
             query.Append("INNER JOIN motorcycle m ON r.motorcycle = m.id ");
             query.Append("WHERE r.id = :id");
             var param = new DynamicParameters();
             param.Add(name: "id", value: id, direction: ParameterDirection.Input);
 
-            var reservation = _context.Connection.Query<Reservation>(query.ToString(), param);
+            var reservation = _context.Connection.Query<GetReservationQueryResult>(query.ToString(), param);
             
             return reservation.FirstOrDefault();
         }
@@ -51,13 +52,14 @@ namespace RentalRide.Infra.Data.ReservationContext.Repositories
         public void CreateReservationPlan(CreateReservationPlanCommand command)
         {
             var query = new StringBuilder();
-            query.Append(@"INSERT INTO reservation_plan (name, rental_days, daily_cost) ");
-            query.Append(@"VALUES(:name,:rental_days,:daily_cost) ");
+            query.Append(@"INSERT INTO reservation_plan (name, rental_days, daily_cost, percentage_fine) ");
+            query.Append(@"VALUES(:name,:rental_days,:daily_cost, :percentage_fine) ");
 
             var param = new DynamicParameters();
             param.Add(name: "name", value: command.name, direction: ParameterDirection.Input);
             param.Add(name: "rental_days", value: command.rental_days, direction: ParameterDirection.Input);
             param.Add(name: "daily_cost", value: command.daily_cost, direction: ParameterDirection.Input);
+            param.Add(name: "percentage_fine", value: command.percentage_fine, direction: ParameterDirection.Input);
 
             _context.Connection.Execute(query.ToString(), param);
         }

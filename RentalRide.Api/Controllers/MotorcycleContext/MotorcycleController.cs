@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentalRide.Domain.DeliveryContext.Commands.Handler;
+using RentalRide.Domain.MotorcycleContext.Commands.Handlers;
 using RentalRide.Domain.MotorcycleContext.Commands.Inputs;
+using RentalRide.Domain.MotorcycleContext.Commands.Outputs;
 using RentalRide.Domain.MotorcycleContext.Entities;
 using RentalRide.Domain.MotorcycleContext.Queries;
 using RentalRide.Domain.MotorcycleContext.Repositories;
@@ -9,11 +12,13 @@ namespace RentalRide.Api.Controllers.MotorcycleContext
 {
     public class MotorcycleController : Controller
     {
+        private readonly MotorcycleHandler _handler;
         private readonly IMotorcycleRepository _repository;
 
-        public MotorcycleController(IMotorcycleRepository repository)
+        public MotorcycleController(IMotorcycleRepository repository, MotorcycleHandler handler)
         {
             _repository = repository;
+            _handler = handler;
         }
 
         [HttpGet]
@@ -23,14 +28,15 @@ namespace RentalRide.Api.Controllers.MotorcycleContext
             return _repository.GetByLicense(license);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("rentalride/create-motorcycle")]
-        public void Create([FromBody] CreateMotorcycleCommand command) 
+        public ICommandResult Create([FromBody] CreateMotorcycleCommand command) 
         {
-            _repository.Create(command);
+            var result = (CommandResult)_handler.Handle(command);
+            return result;
         }
 
-        [HttpPost]
+        [HttpPatch]
         [Route("rentalride/edit-motorcycle")]
         public void Update([FromBody] UpdateMotorcycleCommand command) 
         {

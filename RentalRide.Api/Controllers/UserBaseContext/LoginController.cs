@@ -112,7 +112,5 @@ namespace RentalRide.Api.Controllers.UserBaseContext
             return sbString.ToString();
  
         }
-
-
     }
 }

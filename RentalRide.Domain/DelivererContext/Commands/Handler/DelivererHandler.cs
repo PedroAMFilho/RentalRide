@@ -22,21 +22,31 @@ namespace RentalRide.Domain.DelivererContext.Commands.Handler
 
         public ICommandResult Handle(CreateDelivererCommand command)
         {
-            var id = _repository.Create(command);
-            var userCommand = new CreateUserBaseCommand()
-            {
-                username = command.username,
-                password = command.password,
-                access_level = EAccessLevel.deliverer,
-                deliverer_id = id,
-                email = command.email
-            };
 
-            _userBaseRepository.Create(userCommand);
+            if (command.license_photo_url == null) 
+            { 
+                //if(command.imageFile.
+            }
+
+            var id = _repository.Create(command);
+            
+            _userBaseRepository.Create(CreateUserDeliverer(command,id));
 
             return new CommandResult(true, "Deliverer created with success", new
             {
             });
+        }
+
+        public CreateUserBaseCommand CreateUserDeliverer(CreateDelivererCommand command, int deliverer_id)
+        {
+            return new CreateUserBaseCommand()
+            {
+                username = command.username,
+                password = command.password,
+                access_level = EAccessLevel.deliverer,
+                deliverer_id = deliverer_id,
+                email = command.email
+            };
         }
     }
 }

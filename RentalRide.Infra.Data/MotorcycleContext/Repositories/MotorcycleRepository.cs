@@ -5,6 +5,8 @@ using RentalRide.Domain.MotorcycleContext.Entities;
 using RentalRide.Domain.MotorcycleContext.Commands.Inputs;
 using System.Text;
 using System.Data;
+using System.ComponentModel;
+using RentalRide.Domain.ReservationContext.Commands.Entities;
 
 namespace RentalRide.Infra.Data.MotorcycleContext.Repositories
 {
@@ -37,6 +39,17 @@ namespace RentalRide.Infra.Data.MotorcycleContext.Repositories
             param.Add(name: "license_plate", value: command.license_plate, direction: ParameterDirection.Input);
 
             _context.Connection.Execute(query.ToString(), param);
+        }
+
+        public bool MotorcycleIsAvailable(int motorcycle_id) 
+        {
+            var query = @"SELECT * FROM reservation where motorcycle = :motorcycle_id and status = 0";
+            var param = new DynamicParameters();
+            param.Add(name: "motorcycle_id", value: motorcycle_id, direction: ParameterDirection.Input);
+
+            var motorcycles = _context.Connection.Query<Reservation>(query, param);
+
+            return motorcycles.Any();
         }
 
         public void Update(UpdateMotorcycleCommand command) 

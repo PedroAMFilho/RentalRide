@@ -8,5 +8,6 @@ namespace RentalRide.Domain.DelivererContext.Repositories
         public IEnumerable<Deliverer> GetAllDeliverers();
         public IEnumerable<Deliverer> GetDelivererByName(string name);
         public int Create(CreateDelivererCommand command);
+        public Deliverer GetDelivererById(int id);
     }
 }

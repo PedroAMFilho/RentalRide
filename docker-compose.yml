@@ -17,9 +17,9 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=postgres
       - POSTGRES_DB=rentalride
-  pgadmin:
+  pgadmin_ride:
     image: dpage/pgadmin4:latest
-    container_name: pgadmin
+    container_name: pgadmin_ride
     restart: always
     depends_on:
       - rentalride.database
@@ -30,3 +30,9 @@ services:
       - 8080:80
     volumes:
       - ./data/pgadmin:/var/lib/pgadmin
+  rabbit_ride:
+    container_name: rabbitmq_rental
+    image: rabbitmq:3-management
+    ports:
+    - 5672:5672
+    - 15672:15672

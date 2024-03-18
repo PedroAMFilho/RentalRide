@@ -7,6 +7,7 @@ namespace RentalRide.Domain.DelivererContext.Entities
         public int id { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
+        public string cnpj { get; set; }
         public DateTime date_of_birth { get; set; }
         public string drivers_license { get; set; }
         public string license_photo_url { get; set; }
