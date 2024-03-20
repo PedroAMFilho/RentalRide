@@ -11,8 +11,8 @@ namespace RentalRide.Domain.ReservationContext.Repositories
 {
     public interface IReservationRepository
     {
-        public void Create(CreateReservationCommand command);
+        public int Create(CreateReservationCommand command);
         public GetReservationQueryResult GetReservation(int id);
-        public void CreateReservationPlan(CreateReservationPlanCommand command);
+        public int CreateReservationPlan(CreateReservationPlanCommand command);
     }
 }

@@ -2,11 +2,7 @@
 using RentalRide.Domain.UserBaseContext.Entities;
 using RentalRide.Domain.UserBaseContext.Repositories;
 using RentalRide.Infra.Data.DataContext;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Dapper;
 using RentalRide.Domain.UserBaseContext.Commands.Inputs;
 using System.Data;
@@ -25,8 +21,8 @@ namespace RentalRide.Infra.Data.UserBaseContext.Repositories
         public User UserBase(string user, string pass)
         {
             var query = @"SELECT * FROM userbase where username = :user AND password = :pass";
-            var userBase = _context.Connection.Query<User>(query, new { user = user, pass = pass });
-            return userBase.FirstOrDefault();
+            var userBase = _context.Connection.Query<User>(query, new { user, pass });
+            return userBase?.FirstOrDefault() ?? new User();
         }
 
         public void Create(CreateUserBaseCommand command)

@@ -29,10 +29,12 @@ namespace RentalRide.Domain.DelivererContext.Commands.Inputs
         {
             AddNotifications(new ValidationContract()
                 .Requires()
-                .HasMinLen(username, 3, "User", "Username must contain at least 3 characters")
+                .HasMinLen(username, 2, "User", "Username must contain at least 3 characters")
                 .HasMaxLen(username, 20, "User", "Username must contain at maximum 20 characters")
                 .HasMaxLen(password, 20, "Password", "Password must contain at maximum 20 characters")
                 .HasMinLen(password, 5, "Password", "Password must contain at least 3 characters")
+                //.Matchs( cnpj, @"\\d{2}\\.?\\d{3}\\.?\\d{3}\\/?\\d{4}\\-?\\d{2}\\", "cnpj", "CNPJ format is invalid" )
+                //Matchs(drivers_license, @"((cnh.*[0-9]{11})|(CNH.*[0-9]{11})|(habilitação.*[0-9]{11})|(carteira.*[0-9]{11}))", "Driver's license", "Driver's license format is invalid")
                 .IsEmail(email,"Email","Inform a valid email")
             );
             return Valid;

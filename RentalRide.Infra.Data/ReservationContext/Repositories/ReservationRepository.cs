@@ -4,7 +4,6 @@ using RentalRide.Infra.Data.DataContext;
 using Dapper;
 using System.Text;
 using System.Data;
-using RentalRide.Domain.ReservationContext.Commands.Entities;
 using RentalRide.Domain.ReservationContext.Queries;
 
 namespace RentalRide.Infra.Data.ReservationContext.Repositories
@@ -30,14 +29,15 @@ namespace RentalRide.Infra.Data.ReservationContext.Repositories
 
             var reservation = _context.Connection.Query<GetReservationQueryResult>(query.ToString(), param);
             
-            return reservation.FirstOrDefault();
+            return reservation?.FirstOrDefault() ?? new GetReservationQueryResult();
         }
 
-        public void Create(CreateReservationCommand command) 
+        public int Create(CreateReservationCommand command) 
         {
             var query = new StringBuilder();
             query.Append(@"INSERT INTO reservation (start_date, estimated_end_date, motorcycle, reservation_plan_id, deliverer_id) ");
             query.Append(@"VALUES(:start_date,:estimated_end_date,:motorcycle_id, :reservation_plan_id,:deliverer_id) ");
+            query.Append(@"RETURNING id");
 
             var param = new DynamicParameters();
             param.Add(name: "start_date", value: command.start_date, direction: ParameterDirection.Input);
@@ -46,14 +46,17 @@ namespace RentalRide.Infra.Data.ReservationContext.Repositories
             param.Add(name: "reservation_plan_id", value: command.reservation_plan_id, direction: ParameterDirection.Input);
             param.Add(name: "deliverer_id", value: command.deliverer_id, direction: ParameterDirection.Input);
 
-            _context.Connection.Execute(query.ToString(), param);
+            var id = _context.Connection.Execute(query.ToString(), param);
+
+            return id;
         }
 
-        public void CreateReservationPlan(CreateReservationPlanCommand command)
+        public int CreateReservationPlan(CreateReservationPlanCommand command)
         {
             var query = new StringBuilder();
             query.Append(@"INSERT INTO reservation_plan (name, rental_days, daily_cost, percentage_fine) ");
             query.Append(@"VALUES(:name,:rental_days,:daily_cost, :percentage_fine) ");
+            query.Append(@"RETURNING id");
 
             var param = new DynamicParameters();
             param.Add(name: "name", value: command.name, direction: ParameterDirection.Input);
@@ -61,7 +64,9 @@ namespace RentalRide.Infra.Data.ReservationContext.Repositories
             param.Add(name: "daily_cost", value: command.daily_cost, direction: ParameterDirection.Input);
             param.Add(name: "percentage_fine", value: command.percentage_fine, direction: ParameterDirection.Input);
 
-            _context.Connection.Execute(query.ToString(), param);
+            var id = _context.Connection.Execute(query.ToString(), param);
+
+            return id;
         }
     }
 }

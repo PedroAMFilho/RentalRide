@@ -22,6 +22,8 @@ namespace RentalRide.Domain.DelivererContext.Commands.Handler
 
         public ICommandResult Handle(CreateDelivererCommand command)
         {
+            if (!command.IsValidCommand())
+                return new CommandResult(false, "Invalid request, please verify the input fields.", new {command.Notifications});
 
             if (command.license_photo_url == null) 
             { 

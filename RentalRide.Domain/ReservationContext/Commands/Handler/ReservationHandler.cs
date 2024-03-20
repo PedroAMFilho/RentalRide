@@ -24,20 +24,29 @@ namespace RentalRide.Domain.ReservationContext.Commands.Handler
         public ICommandResult Handle(CreateReservationCommand command)
         {
             if (!command.IsValidCommand())
-                return new CommandResult(false, "Invalid request, please verify the input fields.", new { command });
+                return new CommandResult(false, "Invalid request, please verify the input fields.", new { command.Notifications });
 
             if (!_motorcycleRepository.MotorcycleIsAvailable(command.motorcycle_id))
                 return new CommandResult(false, "This motorcycle id is already rented.", new { command.motorcycle_id });
 
             var deliverer = _delivererRepository.GetDelivererById(command.deliverer_id);
-            if ((deliverer.license_type != ELicense.A) && (deliverer.license_type != ELicense.AB))
+            if (!IsATypeDriverLicense(deliverer.license_type))
                 return new CommandResult(false, "Driver's license dosen't allow this reservation.", new { deliverer });
 
-            _repository.Create(command);
+            var returnedId = _repository.Create(command);
+            if(returnedId == 0)
+                return new CommandResult(false, "Failed to create the reservation.", new { returnedId });
 
             return new CommandResult(true, "Reservation created with success", new
             {
+                returnedId
             });
+        }
+
+        private bool IsATypeDriverLicense(ELicense licenseType) 
+        { 
+            return licenseType == ELicense.A || licenseType == ELicense.AB;
+        
         }
 
         public ICommandResult Handle(ConsultReservationCommand command)
@@ -74,13 +83,12 @@ namespace RentalRide.Domain.ReservationContext.Commands.Handler
 
         public ICommandResult Handle(CreateReservationPlanCommand command)
         {
-            _repository.CreateReservationPlan(command);
+            var id = _repository.CreateReservationPlan(command);
 
             return new CommandResult(true, "Reservation plan created with success", new
             {
+                id
             });
         }
-
-
     }
 }

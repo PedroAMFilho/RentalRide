@@ -41,7 +41,7 @@ namespace RentalRide.Api.Controllers.UserBaseContext
                 return new CommandResult(false, "Please, correct following fields:", login.Notifications);
 
             _user = _repository.UserBase(login.User, login.Password);
-            if (_user == null)
+            if (_user == new User())
                 return new CommandResult(false, "User and/or Password is invalid.", new { });
             //else if (_usuarioBase.Ativo == EBoolean.False)
             //    return new CommandResult(false, "Usuário inativo. Favor, contactar o administrador do sistema para ativar o seu cadastro.", new { });
