@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RentalRide\RentalRide.Domain\RentalRide.Domain.csproj" />
+    <ProjectReference Include="..\RentalRide.Domain\RentalRide.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
