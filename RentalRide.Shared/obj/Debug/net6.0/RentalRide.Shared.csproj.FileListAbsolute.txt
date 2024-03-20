@@ -36,3 +36,16 @@ C:\Projects\RentalRideProject\RentalRide\RentalRide\RentalRide.Shared\obj\Debug\
 C:\Projects\RentalRideProject\RentalRide\RentalRide\RentalRide.Shared\obj\Debug\net6.0\refint\RentalRide.Shared.dll
 C:\Projects\RentalRideProject\RentalRide\RentalRide\RentalRide.Shared\obj\Debug\net6.0\RentalRide.Shared.pdb
 C:\Projects\RentalRideProject\RentalRide\RentalRide\RentalRide.Shared\obj\Debug\net6.0\ref\RentalRide.Shared.dll
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\bin\Debug\net6.0\RentalRide.Shared.deps.json
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\bin\Debug\net6.0\RentalRide.Shared.dll
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\bin\Debug\net6.0\RentalRide.Shared.pdb
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\RentalRide.Shared.csproj.AssemblyReference.cache
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\RentalRide.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\RentalRide.Shared.AssemblyInfoInputs.cache
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\RentalRide.Shared.AssemblyInfo.cs
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\RentalRide.Shared.csproj.CoreCompileInputs.cache
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\RentalRide.Shared.sourcelink.json
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\RentalRide.Shared.dll
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\refint\RentalRide.Shared.dll
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\RentalRide.Shared.pdb
+C:\Projects\RentalRideProject\RentalRide\RentalRide.Shared\obj\Debug\net6.0\ref\RentalRide.Shared.dll

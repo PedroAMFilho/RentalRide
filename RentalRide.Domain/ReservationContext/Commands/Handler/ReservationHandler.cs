@@ -23,7 +23,10 @@ namespace RentalRide.Domain.ReservationContext.Commands.Handler
 
         public ICommandResult Handle(CreateReservationCommand command)
         {
-            if (_motorcycleRepository.MotorcycleIsAvailable(command.motorcycle_id))
+            if (!command.IsValidCommand())
+                return new CommandResult(false, "Invalid request, please verify the input fields.", new { command });
+
+            if (!_motorcycleRepository.MotorcycleIsAvailable(command.motorcycle_id))
                 return new CommandResult(false, "This motorcycle id is already rented.", new { command.motorcycle_id });
 
             var deliverer = _delivererRepository.GetDelivererById(command.deliverer_id);

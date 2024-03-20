@@ -49,7 +49,7 @@ namespace RentalRide.Infra.Data.MotorcycleContext.Repositories
 
             var motorcycles = _context.Connection.Query<Reservation>(query, param);
 
-            return motorcycles.Any();
+            return !motorcycles.Any();
         }
 
         public void Update(UpdateMotorcycleCommand command) 

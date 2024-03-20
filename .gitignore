@@ -1,2 +1,16 @@
 .vs/
 data/pgadmin/sessions/
+RentalRide.Api/bin/
+RentalRide.Api/obj/
+RentalRide.Domain/bin/
+RentalRide.Domain/obj/
+RentalRide.Infra.CrossCutting.AspNetFilters/bin/
+RentalRide.Infra.CrossCutting.AspNetFilters/obj/
+RentalRide.Infra.Data/bin/
+RentalRide.Infra.Data/obj/
+RentalRide.Shared/bin/
+RentalRide.Shared/obj/
+RentalRide.Infra.CrossCutting.Ioc/bin/
+RentalRide.Infra.CrossCutting.Ioc/obj/
+bin/
+obj/
