@@ -22,7 +22,7 @@ namespace RentalRide.Domain.DeliveryContext.Commands.Handler
 
         public ICommandResult Handle(AcceptDeliveryComand command)
         {
-            if (_repository.DelivererHasDelivery(command.deliverer_id))
+            if (_repository.DelivererHasDelivery(command.DelivererId))
             {
                 _repository.AcceptDelivery(command);
 
@@ -37,12 +37,11 @@ namespace RentalRide.Domain.DeliveryContext.Commands.Handler
         {
             _repository.Create(command);
 
-            _service.MessageClients(new Delivery() { delivery_cost = command.delivery_cost, current_status = command.current_status }); ;
+            _service.MessageClients(new Delivery() { DeliveryCost = command.DeliveryCost, CurrentStatus = command.CurrentStatus }); ;
 
             return new CommandResult(true, "Delivery created with success.", new
             {
             });
         }
-
     }
 }

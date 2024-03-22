@@ -21,7 +21,7 @@ namespace RentalRide.Infra.Data.MotorcycleContext.Repositories
 
         public IEnumerable<Motorcycle> GetByLicense(string license)
         {
-            var query = @"SELECT * FROM motorcycle where license_plate LIKE :license";
+            var query = @"SELECT id as Id, model as Model, year as Year, license_plate as LicensePlate, times_rented as TimesRented FROM motorcycle where license_plate LIKE :license";
             var motorcycles = _context.Connection.Query<Motorcycle>(query, new { license = string.Concat(license, "%") });
 
             return motorcycles;
@@ -34,9 +34,9 @@ namespace RentalRide.Infra.Data.MotorcycleContext.Repositories
             query.Append(@"VALUES(:model,:year,:license_plate) ");
 
             var param = new DynamicParameters();
-            param.Add(name: "model", value: command.model, direction: ParameterDirection.Input);
-            param.Add(name: "year", value: command.year, direction: ParameterDirection.Input);
-            param.Add(name: "license_plate", value: command.license_plate, direction: ParameterDirection.Input);
+            param.Add(name: "model", value: command.Model, direction: ParameterDirection.Input);
+            param.Add(name: "year", value: command.Year, direction: ParameterDirection.Input);
+            param.Add(name: "license_plate", value: command.LicensePlate , direction: ParameterDirection.Input);
 
             _context.Connection.Execute(query.ToString(), param);
         }
@@ -56,13 +56,13 @@ namespace RentalRide.Infra.Data.MotorcycleContext.Repositories
         {
             var query = new StringBuilder();
             query.Append(@"UPDATE motorcycle SET ");
-            if (command.model != null)
+            if (command.Model != null)
                 query.Append(@"model = :model ");
 
-            if (command.year != 0)
+            if (command.Year != 0)
                 query.Append(@", year = :year");
 
-            if(command.license_plate != null)
+            if(command.LicensePlate != null)
                 query.Append(@", license_plate =:license_plate ");
 
             query.Append(@"WHERE id = :id");

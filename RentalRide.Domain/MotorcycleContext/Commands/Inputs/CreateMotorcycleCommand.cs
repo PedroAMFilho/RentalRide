@@ -11,17 +11,17 @@ namespace RentalRide.Domain.MotorcycleContext.Commands.Inputs
 {
     public class CreateMotorcycleCommand : Notifiable, ICommand
     {
-        public string model { get; set; }
-        public int year { get; set; }
-        public string license_plate { get; set; }
+        public string Model { get; set; }
+        public int Year { get; set; }
+        public string LicensePlate { get; set; }
         public bool IsValidCommand()
         {
             AddNotifications(new ValidationContract()
                 .Requires()
-                .HasMinLen(license_plate, 6, "License Plate", "Licence plate must have at least 6 characters")
-                .HasMaxLen(license_plate, 9, "License Plate", "Licence plate must have at maximum 9 characters")
-                .HasMinLen(model, 3, "Model", "Model must have at least 3 characters")
-                .HasMaxLen(model, 25, "Model", "Model must have at maximum 20 characters")
+                .HasMinLen(LicensePlate, 6, "License Plate", "Licence plate must have at least 6 characters")
+                .HasMaxLen(LicensePlate, 9, "License Plate", "Licence plate must have at maximum 9 characters")
+                .HasMinLen(Model, 3, "Model", "Model must have at least 3 characters")
+                .HasMaxLen(Model, 25, "Model", "Model must have at maximum 20 characters")
             );
             return Valid;
         }

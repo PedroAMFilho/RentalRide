@@ -1,6 +1,7 @@
 ﻿using RentalRide.Domain.DelivererContext.Repositories;
 using RentalRide.Domain.MotorcycleContext.Repositories;
 using RentalRide.Domain.ReservationContext.Commands.Inputs;
+using RentalRide.Domain.ReservationContext.Queries;
 using RentalRide.Domain.ReservationContext.Repositories;
 using RentalRide.Domain.UserBaseContext.Commands.Outputs;
 using RentalRide.Domain.UserBaseContext.Enum;
@@ -30,7 +31,7 @@ namespace RentalRide.Domain.ReservationContext.Commands.Handler
                 return new CommandResult(false, "This motorcycle id is already rented.", new { command.motorcycle_id });
 
             var deliverer = _delivererRepository.GetDelivererById(command.deliverer_id);
-            if (!IsATypeDriverLicense(deliverer.license_type))
+            if (!IsATypeDriverLicense(deliverer.LicenseType))
                 return new CommandResult(false, "Driver's license dosen't allow this reservation.", new { deliverer });
 
             var returnedId = _repository.Create(command);
@@ -51,12 +52,14 @@ namespace RentalRide.Domain.ReservationContext.Commands.Handler
 
         public ICommandResult Handle(ConsultReservationCommand command)
         {
-            var reservation = _repository.GetReservation(command.reservation_id);
+            var reservation = _repository.GetReservation(command.ReservationId);
+            if (reservation.Id == null)
+                return new CommandResult(false, "Reservation not found", new { });
 
             decimal fine = 0;
-            int reservationDays = (command.estimated_end_date - reservation.start_date).Days;
-            int planReservationDays = reservation.rental_days;
-            decimal standardDailyCost = reservation.daily_cost;
+            int reservationDays = (command.EstimatedEndDate - reservation.StartDate).Days;
+            int planReservationDays = reservation.RentalDays;
+            decimal standardDailyCost = reservation.DailyCost;
             decimal reservationBasePrice = Convert.ToDecimal(planReservationDays) * standardDailyCost;
 
             if (reservationDays > planReservationDays)
@@ -70,7 +73,7 @@ namespace RentalRide.Domain.ReservationContext.Commands.Handler
                 int unusedDays = planReservationDays - reservationDays;
                 reservationBasePrice = (planReservationDays - unusedDays) * standardDailyCost;
                 decimal unusedDaysFullCost = Convert.ToDecimal(unusedDays) * standardDailyCost;
-                fine = (unusedDaysFullCost * reservation.percentage_fine) / 100;
+                fine = (unusedDaysFullCost * reservation.PercentageFine) / 100;
             }
 
             return new CommandResult(true, "Consultation created with success", new

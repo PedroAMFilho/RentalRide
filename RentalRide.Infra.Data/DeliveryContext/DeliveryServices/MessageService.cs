@@ -8,7 +8,7 @@ using RentalRide.Infra.Data.MessageContext;
 using System.Text;
 
 
-namespace RentalRide.Infra.Data.DeliveryContext.Repositories
+namespace RentalRide.Infra.Data.DeliveryContext.DeliveryServices
 {
     public class MessageService : IMessageService
     {
@@ -36,7 +36,7 @@ namespace RentalRide.Infra.Data.DeliveryContext.Repositories
 
             foreach (Deliverer deliverer in deliverers)
             {
-                var textMessage = String.Concat("There is a new delivery available for you ", deliverer.first_name, " the full delivery price is :", delivery.delivery_cost);
+                var textMessage = string.Concat("There is a new delivery available for you ", deliverer.FirstName, " the full delivery price is :", delivery.DeliveryCost);
 
                 var objectMessage = new
                 {
@@ -44,12 +44,11 @@ namespace RentalRide.Infra.Data.DeliveryContext.Repositories
                     delivery,
                     deliverer
                 };
-                
+
                 var json = JsonConvert.SerializeObject(objectMessage);
                 var body = Encoding.UTF8.GetBytes(json);
 
                 channel.BasicPublish(exchange: "", routingKey: "delivery_notification", body: body);
-
             }
         }
     }

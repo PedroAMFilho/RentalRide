@@ -4,10 +4,10 @@ namespace RentalRide.Domain.MotorcycleContext.Entities
 {
     public class Motorcycle : Entity
     {
-        public int id { get; set; }
-        public string model { get; set; }
-        public int year { get; set; }
-        public string license_plate { get; set; }
-        public int times_rented { get; set; }
+        public int Id { get; set; }
+        public string Model { get; set; }
+        public int Year { get; set; }
+        public string LicensePlate { get; set; }
+        public int TimesRented { get; set; }
     }
 }

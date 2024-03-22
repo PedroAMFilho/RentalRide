@@ -4,13 +4,13 @@ namespace RentalRide.Domain.DelivererContext.Entities
 {
     public class Deliverer
     {
-        public int id { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public string cnpj { get; set; }
-        public DateTime date_of_birth { get; set; }
-        public string drivers_license { get; set; }
-        public string license_photo_url { get; set; }
-        public ELicense license_type { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Cnpj { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string DriversLicense { get; set; }
+        public string LicensePhotoUrl { get; set; }
+        public ELicense LicenseType { get; set; }
     }
 }

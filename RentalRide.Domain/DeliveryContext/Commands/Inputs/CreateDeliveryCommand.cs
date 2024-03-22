@@ -8,8 +8,8 @@ namespace RentalRide.Domain.DeliveryContext.Commands.Inputs
 {
     public class CreateDeliveryCommand : Notifiable, ICommand
     {
-        public ECurrentStatus current_status { get; set; }
-        public decimal delivery_cost { get; set; }
+        public ECurrentStatus CurrentStatus { get; set; }
+        public decimal DeliveryCost { get; set; }
 
         public bool IsValidCommand()
         {

@@ -61,13 +61,13 @@ namespace RentalRide.Infra.Data.DelivererContext.Repositories
 
             var param = new DynamicParameters();
             param.Add(name: "ide_del", dbType: DbType.Int32, direction: ParameterDirection.ReturnValue);
-            param.Add(name: "first_name", value: command.first_name, direction: ParameterDirection.Input);
-            param.Add(name: "last_name", value: command.last_name, direction: ParameterDirection.Input);
-            param.Add(name: "cnpj", value: command.cnpj, direction: ParameterDirection.Input);
-            param.Add(name: "date_of_birth", value: Convert.ToDateTime(command.date_of_birth), direction: ParameterDirection.Input);
-            param.Add(name: "drivers_license", value: command.drivers_license, direction: ParameterDirection.Input);
-            param.Add(name: "license_photo_url", value: command.license_photo_url, direction: ParameterDirection.Input);
-            param.Add(name: "license_type", value: (int)command.license_type, direction: ParameterDirection.Input);
+            param.Add(name: "first_name", value: command.FirstName, direction: ParameterDirection.Input);
+            param.Add(name: "last_name", value: command.LastName, direction: ParameterDirection.Input);
+            param.Add(name: "cnpj", value: command.Cnpj, direction: ParameterDirection.Input);
+            param.Add(name: "date_of_birth", value: Convert.ToDateTime(command.DateOfBirth), direction: ParameterDirection.Input);
+            param.Add(name: "drivers_license", value: command.DriversLicense, direction: ParameterDirection.Input);
+            param.Add(name: "license_photo_url", value: command.LicensePhotoUrl, direction: ParameterDirection.Input);
+            param.Add(name: "license_type", value: (int)command.LicenseType, direction: ParameterDirection.Input);
            
             var id = _context.Connection.Execute(query.ToString(), param);
 

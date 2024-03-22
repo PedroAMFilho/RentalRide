@@ -4,12 +4,6 @@ using RentalRide.Domain.DelivererContext.Commands.Inputs;
 using RentalRide.Domain.DelivererContext.Repositories;
 using RentalRide.Domain.UserBaseContext.Commands.Inputs;
 using RentalRide.Domain.UserBaseContext.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RentalRide.Tests.Commands
 {
@@ -29,14 +23,14 @@ namespace RentalRide.Tests.Commands
         {
             var command = new CreateDelivererCommand()
             {
-                cnpj = "22.916.501/0001-55",
-                date_of_birth = new DateTime(2000, 1, 1),
-                drivers_license = "01141162593",
-                username = "Test User",
-                email = "test@test.com",
-                first_name = "John",
-                last_name = "Doe",
-                password = "password"
+                Cnpj = "22.916.501/0001-55",
+                DateOfBirth = new DateTime(2000, 1, 1),
+                DriversLicense = "01141162593",
+                Username = "Test User",
+                Email = "test@test.com",
+                FirstName = "John",
+                LastName = "Doe",
+                Password = "password"
             };
 
             _repository.Setup(x => x.Create(command)).Returns(5);

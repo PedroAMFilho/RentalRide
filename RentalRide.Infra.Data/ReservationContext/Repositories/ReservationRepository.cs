@@ -20,7 +20,8 @@ namespace RentalRide.Infra.Data.ReservationContext.Repositories
         public GetReservationQueryResult GetReservation(int id)
         {
             var query = new StringBuilder();
-            query.Append("SELECT start_date, end_date, model, year, license_plate, name, rental_days, daily_cost, status , percentage_fine ");
+            query.Append("SELECT start_date as StartDate, end_date as EndDate, model as Model, year as Year, license_plate as LicensePlate, ");
+            query.Append("name as Name, rental_days as RentalDays, daily_cost as DailyCost, status as Status, percentage_fine as PercentageFine ");
             query.Append("from reservation r INNER JOIN reservation_plan p ON r.reservation_plan_id = p.id ");
             query.Append("INNER JOIN motorcycle m ON r.motorcycle = m.id ");
             query.Append("WHERE r.id = :id");

@@ -26,8 +26,8 @@ namespace RentalRide.Infra.Data.DeliveryContext.Repositories
             query.Append("VALUES(:current_status, :delivery_cost) ");
 
             var param = new DynamicParameters();
-            param.Add(name: "current_status", value: (int)command.current_status, direction: ParameterDirection.Input);
-            param.Add(name: "delivery_cost", value: (int)command.delivery_cost, direction: ParameterDirection.Input);
+            param.Add(name: "current_status", value: (int)command.CurrentStatus, direction: ParameterDirection.Input);
+            param.Add(name: "delivery_cost", value: (int)command.DeliveryCost, direction: ParameterDirection.Input);
 
             _context.Connection.Execute(query.ToString(), param);
 
@@ -38,20 +38,20 @@ namespace RentalRide.Infra.Data.DeliveryContext.Repositories
             var query = new StringBuilder();
             query.Append("UPDATE delivery SET deliverer_id = :deliverer_id WHERE id = delivery_id");
             var param = new DynamicParameters();
-            param.Add(name: "deliverer_id", value: command.deliverer_id, direction: ParameterDirection.Input);
-            param.Add(name: "delivery_id", value: command.delivery_id, direction: ParameterDirection.Input);
+            param.Add(name: "deliverer_id", value: command.DelivererId, direction: ParameterDirection.Input);
+            param.Add(name: "delivery_id", value: command.DeliveryId, direction: ParameterDirection.Input);
 
             _context.Connection.Execute(query.ToString(), param);
         }
 
-        public ICommandResult GetDelivery(int delivery_id, int deliverer_id)
+        public ICommandResult GetDelivery(int deliveryId, int delivererId)
         {
             var query = new StringBuilder();
             query.Append("SELECT id , create_at, deliverer_id, current_status, delivery_cost FROM delivery where id = :delivery_id and deliverer_id  = :delivery_id");
 
             var param = new DynamicParameters();
-            param.Add(name: "delivery_id", value: delivery_id, direction: ParameterDirection.Input);
-            param.Add(name: "deliverer_id", value: deliverer_id, direction: ParameterDirection.Input);
+            param.Add(name: "delivery_id", value: deliveryId, direction: ParameterDirection.Input);
+            param.Add(name: "deliverer_id", value: delivererId, direction: ParameterDirection.Input);
             var deliverer = _context.Connection.Query<Delivery>(query.ToString(), param).FirstOrDefault();
 
             return new CommandResult(true, "Delivery sucessfuly located:", new
@@ -60,31 +60,31 @@ namespace RentalRide.Infra.Data.DeliveryContext.Repositories
             });
         }
 
-        public bool DelivererHasDelivery(int deliverer_id)
+        public bool DelivererHasDelivery(int delivererId)
         {
             var query = new StringBuilder();
             query.Append(@"SELECT id , create_at, deliverer_id, current_status, delivery_cost FROM delivery where deliverer_id  = :delivery_id and current_status = 0");
 
             var param = new DynamicParameters();
-            param.Add(name: "deliverer_id", value: deliverer_id, direction: ParameterDirection.Input);
+            param.Add(name: "deliverer_id", value: delivererId, direction: ParameterDirection.Input);
 
             var result = _context.Connection.Query<bool>(query.ToString(), param);
 
             return result.Any();
         }
 
-        public ICommandResult EndDelivery(int delivery_id) 
+        public ICommandResult EndDelivery(int deliveryId) 
         {
             var query = new StringBuilder();
             query.Append("UPDATE delivery SET current_status = 1 WHERE id = delivery_id");
             var param = new DynamicParameters();
-            param.Add(name: "delivery_id", value: delivery_id, direction: ParameterDirection.Input);
+            param.Add(name: "delivery_id", value: deliveryId, direction: ParameterDirection.Input);
 
             _context.Connection.Execute(query.ToString(), param);
 
             return new CommandResult(true, "Delivery completed:", new
             {
-                delivery_id
+                deliveryId
             });
 
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentalRide.Domain.ReservationContext.Commands.Handler;
 using RentalRide.Domain.ReservationContext.Commands.Inputs;
 using RentalRide.Domain.ReservationContext.Repositories;
@@ -17,6 +18,7 @@ namespace RentalRide.Api.Controllers.ReservationContext
         }
 
         [HttpPut]
+        [Authorize]
         [Route("rentalride/create-reservation")]
         public ICommandResult Create([FromBody]CreateReservationCommand command) 
         {
@@ -33,6 +35,7 @@ namespace RentalRide.Api.Controllers.ReservationContext
         }
 
         [HttpPut]
+        [Authorize]
         [Route("rentalride/create-reservation-plan")]
         public ICommandResult CreateReservationPlan([FromBody] CreateReservationPlanCommand command)
         {

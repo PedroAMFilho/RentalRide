@@ -95,22 +95,22 @@ namespace RentalRide.Api.Controllers.UserBaseContext
 
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("rentalride/password/{pass}")]
-        public string GetPassword(string pass)
-        {
-            if (string.IsNullOrEmpty(pass)) return "";
-            //var password = (pass += "|3c3ad4a0-627f-43a2-b2f4-a8c1529dcf23");
-            var password = pass;
-            var md5 = System.Security.Cryptography.MD5.Create();
-            var data = md5.ComputeHash(Encoding.Default.GetBytes(password));
-            var sbString = new StringBuilder();
-            foreach (var t in data)
-                sbString.Append(t.ToString("x2"));
+        //[HttpGet]
+        //[AllowAnonymous]
+        //[Route("rentalride/password/{pass}")]
+        //public string GetPassword(string pass)
+        //{
+        //    if (string.IsNullOrEmpty(pass)) return "";
+        //    //var password = (pass += "|3c3ad4a0-627f-43a2-b2f4-a8c1529dcf23");
+        //    var password = pass;
+        //    var md5 = System.Security.Cryptography.MD5.Create();
+        //    var data = md5.ComputeHash(Encoding.Default.GetBytes(password));
+        //    var sbString = new StringBuilder();
+        //    foreach (var t in data)
+        //        sbString.Append(t.ToString("x2"));
 
-            return sbString.ToString();
+        //    return sbString.ToString();
  
-        }
+        //}
     }
 }

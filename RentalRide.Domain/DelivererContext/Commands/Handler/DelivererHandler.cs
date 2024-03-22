@@ -25,7 +25,7 @@ namespace RentalRide.Domain.DelivererContext.Commands.Handler
             if (!command.IsValidCommand())
                 return new CommandResult(false, "Invalid request, please verify the input fields.", new {command.Notifications});
 
-            if (command.license_photo_url == null) 
+            if (command.LicensePhotoUrl == null) 
             { 
                 //if(command.imageFile.
             }
@@ -43,11 +43,11 @@ namespace RentalRide.Domain.DelivererContext.Commands.Handler
         {
             return new CreateUserBaseCommand()
             {
-                username = command.username,
-                password = command.password,
+                username = command.Username,
+                password = command.Password,
                 access_level = EAccessLevel.deliverer,
                 deliverer_id = deliverer_id,
-                email = command.email
+                email = command.Email 
             };
         }
     }

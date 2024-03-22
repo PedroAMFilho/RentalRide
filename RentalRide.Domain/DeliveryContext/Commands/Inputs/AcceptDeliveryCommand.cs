@@ -6,8 +6,8 @@ namespace RentalRide.Domain.DeliveryContext.Commands.Inputs
 {
     public class AcceptDeliveryComand : Notifiable, ICommand
     {
-        public int deliverer_id { get; set; }
-        public int delivery_id { get; set; }
+        public int DelivererId { get; set; }
+        public int DeliveryId { get; set; }
 
         public bool IsValidCommand()
         {

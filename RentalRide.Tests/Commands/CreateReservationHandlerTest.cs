@@ -35,7 +35,7 @@ namespace RentalRide.Tests.Commands
             };
 
             _motorcycleRepository.Setup(x => x.MotorcycleIsAvailable(It.IsAny<int>())).Returns(true);
-            _delivererRepository.Setup(x => x.GetDelivererById(It.IsAny<int>())).Returns(new Deliverer() { license_type = ELicense.A });
+            _delivererRepository.Setup(x => x.GetDelivererById(It.IsAny<int>())).Returns(new Deliverer() { LicenseType = ELicense.A });
             _reservtionRepository.Setup(x => x.Create(It.IsAny<CreateReservationCommand>())).Returns(15);
 
             var handler = new ReservationHandler(_reservtionRepository.Object,
@@ -45,7 +45,6 @@ namespace RentalRide.Tests.Commands
 
             Assert.True(result.Success);
         }
-
 
         [Fact]
         public void Handle_Should_ReturnFailureResult_When_ExpectedDate_before_CreationDate()
@@ -101,7 +100,7 @@ namespace RentalRide.Tests.Commands
                 deliverer_id = 2
             };
 
-            _delivererRepository.Setup(x => x.GetDelivererById(It.IsAny<int>())).Returns(new Deliverer() { license_type = ELicense.B });
+            _delivererRepository.Setup(x => x.GetDelivererById(It.IsAny<int>())).Returns(new Deliverer() { LicenseType = ELicense.B });
 
             var handler = new ReservationHandler(_reservtionRepository.Object,
                 _motorcycleRepository.Object, _delivererRepository.Object);

@@ -8,7 +8,7 @@ namespace RentalRide.Domain.ReservationContext.Commands.Inputs
 {
     public class ConsultReservationCommand
     {
-        public int reservation_id { get; set; }
-        public DateTime estimated_end_date { get; set; }
+        public int ReservationId { get; set; }
+        public DateTime EstimatedEndDate { get; set; }
     }
 }
