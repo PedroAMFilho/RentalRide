@@ -27,11 +27,11 @@ namespace RentalRide.Tests.Commands
         {
             var command = new CreateReservationCommand()
             {
-                start_date = DateTime.Now,
-                estimated_end_date = DateTime.Now.AddDays(5),
-                motorcycle_id = 2,
-                reservation_plan_id = 3,
-                deliverer_id = 2
+                StartDate = DateTime.Now,
+                EstimatedEndDate = DateTime.Now.AddDays(5),
+                MotorcycleId = 2,
+                ReservationPlanId = 3,
+                DelivererId = 2
             };
 
             _motorcycleRepository.Setup(x => x.MotorcycleIsAvailable(It.IsAny<int>())).Returns(true);
@@ -51,11 +51,11 @@ namespace RentalRide.Tests.Commands
         {
             var command = new CreateReservationCommand()
             {
-                start_date = DateTime.Now,
-                estimated_end_date = DateTime.Now.AddDays(-5),
-                motorcycle_id = 2,
-                reservation_plan_id = 3,
-                deliverer_id = 2
+                StartDate = DateTime.Now,
+                EstimatedEndDate = DateTime.Now.AddDays(-5),
+                MotorcycleId = 2,
+                ReservationPlanId = 3,
+                DelivererId = 2
             };
 
             var handler = new ReservationHandler(_reservtionRepository.Object,
@@ -71,11 +71,11 @@ namespace RentalRide.Tests.Commands
         {
             var command = new CreateReservationCommand()
             {
-                start_date = DateTime.Now,
-                estimated_end_date = DateTime.Now.AddDays(5),
-                motorcycle_id = 2,
-                reservation_plan_id = 3,
-                deliverer_id = 2
+                StartDate = DateTime.Now,
+                EstimatedEndDate = DateTime.Now.AddDays(5),
+                MotorcycleId = 2,
+                ReservationPlanId = 3,
+                DelivererId = 2
             };
 
             _motorcycleRepository.Setup(x => x.MotorcycleIsAvailable(It.IsAny<int>())).Returns(false);
@@ -93,11 +93,11 @@ namespace RentalRide.Tests.Commands
         {
             var command = new CreateReservationCommand()
             {
-                start_date = DateTime.Now,
-                estimated_end_date = DateTime.Now.AddDays(5),
-                motorcycle_id = 2,
-                reservation_plan_id = 3,
-                deliverer_id = 2
+                StartDate = DateTime.Now,
+                EstimatedEndDate = DateTime.Now.AddDays(5),
+                MotorcycleId = 2,
+                ReservationPlanId = 3,
+                DelivererId = 2
             };
 
             _delivererRepository.Setup(x => x.GetDelivererById(It.IsAny<int>())).Returns(new Deliverer() { LicenseType = ELicense.B });
@@ -115,11 +115,11 @@ namespace RentalRide.Tests.Commands
         {
             var command = new CreateReservationCommand()
             {
-                start_date = DateTime.Now,
-                estimated_end_date = DateTime.Now.AddDays(5),
-                motorcycle_id = 2,
-                reservation_plan_id = 3,
-                deliverer_id = 2
+                StartDate = DateTime.Now,
+                EstimatedEndDate = DateTime.Now.AddDays(5),
+                MotorcycleId = 2,
+                ReservationPlanId = 3,
+                DelivererId = 2
             };
 
             _reservtionRepository.Setup(x => x.Create(It.IsAny<CreateReservationCommand>())).Returns(0);

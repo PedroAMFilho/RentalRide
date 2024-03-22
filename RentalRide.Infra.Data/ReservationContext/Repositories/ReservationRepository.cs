@@ -41,11 +41,11 @@ namespace RentalRide.Infra.Data.ReservationContext.Repositories
             query.Append(@"RETURNING id");
 
             var param = new DynamicParameters();
-            param.Add(name: "start_date", value: command.start_date, direction: ParameterDirection.Input);
-            param.Add(name: "estimated_end_date", value: command.estimated_end_date, direction: ParameterDirection.Input);
-            param.Add(name: "motorcycle_id", value: command.motorcycle_id, direction: ParameterDirection.Input);
-            param.Add(name: "reservation_plan_id", value: command.reservation_plan_id, direction: ParameterDirection.Input);
-            param.Add(name: "deliverer_id", value: command.deliverer_id, direction: ParameterDirection.Input);
+            param.Add(name: "start_date", value: command.StartDate, direction: ParameterDirection.Input);
+            param.Add(name: "estimated_end_date", value: command.EstimatedEndDate, direction: ParameterDirection.Input);
+            param.Add(name: "motorcycle_id", value: command.MotorcycleId, direction: ParameterDirection.Input);
+            param.Add(name: "reservation_plan_id", value: command.ReservationPlanId, direction: ParameterDirection.Input);
+            param.Add(name: "deliverer_id", value: command.DelivererId, direction: ParameterDirection.Input);
 
             var id = _context.Connection.Execute(query.ToString(), param);
 
@@ -60,10 +60,10 @@ namespace RentalRide.Infra.Data.ReservationContext.Repositories
             query.Append(@"RETURNING id");
 
             var param = new DynamicParameters();
-            param.Add(name: "name", value: command.name, direction: ParameterDirection.Input);
-            param.Add(name: "rental_days", value: command.rental_days, direction: ParameterDirection.Input);
-            param.Add(name: "daily_cost", value: command.daily_cost, direction: ParameterDirection.Input);
-            param.Add(name: "percentage_fine", value: command.percentage_fine, direction: ParameterDirection.Input);
+            param.Add(name: "name", value: command.Name, direction: ParameterDirection.Input);
+            param.Add(name: "rental_days", value: command.RentalDays, direction: ParameterDirection.Input);
+            param.Add(name: "daily_cost", value: command.DailyCost, direction: ParameterDirection.Input);
+            param.Add(name: "percentage_fine", value: command.PercentageFine, direction: ParameterDirection.Input);
 
             var id = _context.Connection.Execute(query.ToString(), param);
 

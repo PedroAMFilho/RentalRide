@@ -1,6 +1,7 @@
 ﻿using RentalRide.Domain.DelivererContext.Repositories;
 using RentalRide.Domain.MotorcycleContext.Repositories;
 using RentalRide.Domain.ReservationContext.Commands.Inputs;
+using RentalRide.Domain.ReservationContext.Commands.Outputs;
 using RentalRide.Domain.ReservationContext.Queries;
 using RentalRide.Domain.ReservationContext.Repositories;
 using RentalRide.Domain.UserBaseContext.Commands.Outputs;
@@ -27,10 +28,13 @@ namespace RentalRide.Domain.ReservationContext.Commands.Handler
             if (!command.IsValidCommand())
                 return new CommandResult(false, "Invalid request, please verify the input fields.", new { command.Notifications });
 
-            if (!_motorcycleRepository.MotorcycleIsAvailable(command.motorcycle_id))
-                return new CommandResult(false, "This motorcycle id is already rented.", new { command.motorcycle_id });
+            if (!_motorcycleRepository.MotorcycleIsAvailable(command.MotorcycleId))
+                return new CommandResult(false, "This motorcycle id is already rented.", new { command.MotorcycleId });
 
-            var deliverer = _delivererRepository.GetDelivererById(command.deliverer_id);
+            var deliverer = _delivererRepository.GetDelivererById(command.DelivererId);
+            if (deliverer.Id == 0)
+                return new CommandResult(false, "Informed deliverer not found :", new { command.DelivererId });
+
             if (!IsATypeDriverLicense(deliverer.LicenseType))
                 return new CommandResult(false, "Driver's license dosen't allow this reservation.", new { deliverer });
 
@@ -76,11 +80,11 @@ namespace RentalRide.Domain.ReservationContext.Commands.Handler
                 fine = (unusedDaysFullCost * reservation.PercentageFine) / 100;
             }
 
-            return new CommandResult(true, "Consultation created with success", new
+            return new CommandResult(true, "Consultation created with success", new ConsultReservationQueryResult
             {
-                reservationFinalPrice = Math.Round(reservationBasePrice + fine, 2),
-                reservationBasePrice  = Math.Round(reservationBasePrice,2),
-                fine  = Math.Round(fine,2)
+                ReservationFinalPrice = Math.Round(reservationBasePrice + fine, 2),
+                ReservationBasePrice  = Math.Round(reservationBasePrice,2),
+                ReservationFine  = Math.Round(fine,2)
             }); ;
         }
 

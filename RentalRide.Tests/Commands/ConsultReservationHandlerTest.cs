@@ -5,11 +5,6 @@ using RentalRide.Domain.ReservationContext.Commands.Handler;
 using RentalRide.Domain.ReservationContext.Commands.Inputs;
 using RentalRide.Domain.ReservationContext.Queries;
 using RentalRide.Domain.ReservationContext.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RentalRide.Tests.Commands
 {
@@ -45,5 +40,37 @@ namespace RentalRide.Tests.Commands
             Assert.False(result.Success);
         }
 
+
+        [Fact]
+        public void Handle_Should_ApplyFine_When_ConsultingDelayed_Resevation()
+        {
+            var command = new ConsultReservationCommand()
+            {
+                ReservationId = 3,
+                EstimatedEndDate = DateTime.Now.AddDays(9)
+            };
+
+            _reservtionRepository.Setup(x => x.GetReservation(It.IsAny<int>())).Returns(new GetReservationQueryResult() 
+            {  
+                Id = 3,
+                RentalDays = 7,
+                PercentageFine = 20,
+                EstimatedEndDate = DateTime.Now.AddDays(9),
+                StartDate = DateTime.Now,
+                DailyCost = 30
+            });
+
+            var handler = new ReservationHandler(_reservtionRepository.Object,
+                _motorcycleRepository.Object, _delivererRepository.Object);
+
+            var result = handler.Handle(command);
+
+            Assert.True(result.Success);
+
+            var fineProperty = result.Data.GetType();
+            decimal fine = (decimal)fineProperty.GetProperty("ReservationFine").GetValue(result.Data, null);
+
+            Assert.True(fine != 0);
+        }
     }
 }

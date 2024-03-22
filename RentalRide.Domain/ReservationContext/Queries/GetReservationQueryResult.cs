@@ -5,7 +5,7 @@ namespace RentalRide.Domain.ReservationContext.Queries
 {
     public class GetReservationQueryResult
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EstimatedEndDate { get; set; }
         public DateTime EndDate { get; set; }

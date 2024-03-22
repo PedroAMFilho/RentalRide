@@ -11,15 +11,17 @@ namespace RentalRide.Infra.Data.DelivererContext.Repositories
     public class DelivererRepository : IDelivererRepository
     {
         private readonly RentalRideDataContext _context;
+        private readonly string SelectDeliverer = @"SELECT id_del as Id, first_name as FirstName, last_name as LastName, date_of_birth as DateOfBirth, drivers_license as DriversLicense, cnpj as Cnpj, license_photo_url as LicensePhotoUrl, license_type as LicenseType FROM deliverer ";
 
         public DelivererRepository(RentalRideDataContext context)
         {
             _context = context;
         }
 
+
         public IEnumerable<Deliverer> GetAllDeliverers()
         {
-            var query = @"SELECT id_del, first_name, last_name, date_of_birth, drivers_license, cnpj, license_photo_url, license_type FROM deliverer";
+            var query = SelectDeliverer;
             var deliverer = _context.Connection.Query<Deliverer>(query);
 
             return deliverer;
@@ -28,7 +30,8 @@ namespace RentalRide.Infra.Data.DelivererContext.Repositories
         public IEnumerable<Deliverer> GetDelivererByName(string name)
         {
             var query = new StringBuilder();
-            query.Append(@"SELECT id_del, first_name, last_name, date_of_birth, drivers_license, cnpj, license_photo_url, license_type FROM deliverer where concat(first_name , ' ' , last_name) LIKE :name");
+            query.Append(SelectDeliverer);
+            query.Append(@"where concat(first_name , ' ' , last_name) LIKE :name");
             var deliverer = _context.Connection.Query<Deliverer>(query.ToString(), new { name = string.Concat(name, "%") });
 
             return deliverer;
@@ -37,16 +40,18 @@ namespace RentalRide.Infra.Data.DelivererContext.Repositories
         public Deliverer GetDelivererById(int deliverer_id)
         {
             var query = new StringBuilder();
-            query.Append(@"SELECT id_del, first_name, last_name, date_of_birth, drivers_license, cnpj, license_photo_url, license_type FROM deliverer where id_del = :deliverer_id");
-            var deliverer = _context.Connection.Query<Deliverer>(query.ToString(), new { deliverer_id }).FirstOrDefault();
+            query.Append(SelectDeliverer);
+            query.Append(@"where id_del = :deliverer_id");
+            var deliverer = _context.Connection.Query<Deliverer>(query.ToString(), new { deliverer_id });
 
-            return deliverer;
+            return deliverer.FirstOrDefault() ?? new Deliverer();
         }
 
         public IEnumerable<Deliverer> GetAllAvailableDeliverers() 
         {
             var query = new StringBuilder();
-            query.Append(@"SELECT id_del, first_name, last_name, date_of_birth, drivers_license, cnpj, license_photo_url, license_type FROM deliverer LEFT JOIN delivery where delivery.deliverer_id IS NULL");
+            query.Append(SelectDeliverer);
+            query.Append(@"LEFT JOIN delivery where delivery.deliverer_id IS NULL");
             var deliverer = _context.Connection.Query<Deliverer>(query.ToString());
 
             return deliverer;
