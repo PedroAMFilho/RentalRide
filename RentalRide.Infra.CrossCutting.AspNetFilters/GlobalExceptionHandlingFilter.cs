@@ -22,16 +22,15 @@ namespace RentalRide.Infra.CrossCutting.AspNetFilters
 
         public void OnException(ExceptionContext context)
         {
-
             #region --> Global error via json
-
 
             var status = HttpStatusCode.InternalServerError;
             var contextException = context.Exception;
-            var baseException = contextException.GetBaseException();
             var response = context.HttpContext.Response;
 
-            CommandResult commandResult = new CommandResult(
+            _logger.LogError(1, contextException, contextException.Message);
+
+            CommandResult commandResult = new(
                 false,
                 $"Error (1). {status}: {context.Exception.Message}. " +
                 $"Try again or contact system admin",

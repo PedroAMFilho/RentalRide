@@ -2,7 +2,6 @@
 using RentalRide.Domain.MotorcycleContext.Repositories;
 using RentalRide.Domain.ReservationContext.Commands.Inputs;
 using RentalRide.Domain.ReservationContext.Commands.Outputs;
-using RentalRide.Domain.ReservationContext.Queries;
 using RentalRide.Domain.ReservationContext.Repositories;
 using RentalRide.Domain.UserBaseContext.Commands.Outputs;
 using RentalRide.Domain.UserBaseContext.Enum;
@@ -29,7 +28,7 @@ namespace RentalRide.Domain.ReservationContext.Commands.Handler
                 return new CommandResult(false, "Invalid request, please verify the input fields.", new { command.Notifications });
 
             if (!_motorcycleRepository.MotorcycleIsAvailable(command.MotorcycleId))
-                return new CommandResult(false, "This motorcycle id is already rented.", new { command.MotorcycleId });
+                return new CommandResult(false, "This motorcycle is already rented. Motorcycle Id:", new { command.MotorcycleId });
 
             var deliverer = _delivererRepository.GetDelivererById(command.DelivererId);
             if (deliverer.Id == 0)
